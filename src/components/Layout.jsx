@@ -1,11 +1,12 @@
 import { Outlet, Link } from 'react-router-dom';
 import { Home, Settings, History, Utensils } from 'lucide-react';
 import BottomNav from './BottomNav';
+import RippleEffect from './RippleEffect';
 
 export default function Layout() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm border-b border-gray-200">
+      <nav className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -42,6 +43,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <BottomNav />
+      <RippleEffect />
     </div>
   );
 }

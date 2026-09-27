@@ -10,3 +10,26 @@ body {
 #root {
   min-height: 100vh;
 }
+
+@keyframes ripple-expand {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.ripple-span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background-color: currentColor;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: ripple-expand 500ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-span {
+    display: none;
+  }
+}

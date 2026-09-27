@@ -5,6 +5,8 @@ import TableDetail from './pages/TableDetail';
 import TableHistory from './pages/TableHistory';
 import GlobalHistory from './pages/GlobalHistory';
 import Config from './pages/Config';
+import ConfigMenu from './pages/ConfigMenu';
+import ConfigProfile from './pages/ConfigProfile';
 
 function App() {
   return (
@@ -15,7 +17,10 @@ function App() {
           <Route path="table/:id" element={<TableDetail />} />
           <Route path="table/:id/history" element={<TableHistory />} />
           <Route path="history" element={<GlobalHistory />} />
-          <Route path="config" element={<Config />} />
+          <Route path="config" element={<Config />}>
+            <Route index element={<ConfigMenu />} />
+            <Route path="profilo" element={<ConfigProfile />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

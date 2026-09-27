@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Utensils, Euro } from 'lucide-react';
 import { useTables } from '../hooks/useTables';
+import { useBusinessProfile } from '../hooks/useBusinessProfile';
 
 export default function Home() {
   const navigate = useNavigate();
   const { tables, addTable, getTableTotal } = useTables();
+  const { profile } = useBusinessProfile();
   const [showNewTable, setShowNewTable] = useState(false);
   const [tableName, setTableName] = useState('');
 
@@ -21,6 +23,18 @@ export default function Home() {
 
   return (
     <div>
+      {profile.name && (
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-10 w-10 flex-shrink-0 rounded-lg border border-gray-200 bg-white flex items-center justify-center overflow-hidden">
+            {profile.logo ? (
+              <img src={profile.logo} alt={profile.name} className="h-full w-full object-cover" />
+            ) : (
+              <Utensils className="h-5 w-5 text-indigo-600" />
+            )}
+          </div>
+          <span className="text-lg font-semibold text-gray-900">{profile.name}</span>
+        </div>
+      )}
       <div className="flex flex-wrap justify-between items-center gap-3 mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Tavoli Attivi</h1>
         <button
